@@ -20,7 +20,7 @@ public class EventSubject extends AbstractSubject{
     }
 
     @Override
-    public void detach(EventObserver observer) {
+    public void detach(AbstractEventObserver observer) {
         consoleOut.updateStatus("Subject: removing observer");
         super.detach(observer);
     }

@@ -2,17 +2,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractSubject {
-    private List<EventObserver> observers = new ArrayList<EventObserver>();
+    private List<AbstractEventObserver> observers = new ArrayList<>();
 
-    public void attach(EventObserver observer) {
+    public void attach(AbstractEventObserver observer) {
          this.observers.add(observer);
+    }
+
+    public void detach(AbstractEventObserver observer) {
+        observers.remove(observer);
     }
 
     protected void notifyObservers() {
         observers.forEach(observer -> observer.update());
-    }
-
-    public void detach(EventObserver observer) {
-        observers.remove(observer);
     }
 }

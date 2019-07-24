@@ -13,6 +13,7 @@ public class EventObserver extends AbstractEventObserver{
     @Override
     void update() {
         consoleOut.updateStatus(observerName + ": event occurred.");
-        consoleOut.updateStatus(observerName + " getData: " + subject.getData());
+        final int data = subject.getData();
+        consoleOut.updateStatus(observerName + " getData: " + data);
     }
 }
