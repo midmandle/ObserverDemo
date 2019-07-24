@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'MPG'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.5.1'
+    // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+    testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '3.0.0'
+}
+
+test {
+    useJUnitPlatform()
+
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nTest result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
+}
